@@ -1,5 +1,5 @@
 module FeatureFlags
-  class FeatureFlagsController < ApplicationController
+  class FeatureFlagsController < ::ApplicationController
     #template FeatureFlags.configuration.template.downcase
 
     def index
