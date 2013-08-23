@@ -34,7 +34,6 @@ module FeatureFlags
         template "feature_flag_model.rb", "app/models/feature_flag.rb"
       end
 
-
     end
   end
 
