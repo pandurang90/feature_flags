@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = FeatureFlags::VERSION
   gem.authors       = ["pandurang"]
   gem.email         = ["pandurang.plw@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = "desc"
+  gem.summary       = "summary"
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)

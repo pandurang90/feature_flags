@@ -1,4 +1,5 @@
 class FeatureFlagsController < ActionController::Base
+  #template FeatureFlags.configuration.template.downcase
 
   def index
     @features = FeatureFlag.all   

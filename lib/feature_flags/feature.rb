@@ -10,7 +10,7 @@ module FeatureFlags
       feature = FeatureFlag.where(:feature => feature).first
 
       if feature.present? 
-        feature.status? ? return true : return false
+        feature.status? ? true : false
       elsif
         FeatureFlag.create!(:feature => feature, :status => true)
         return true
