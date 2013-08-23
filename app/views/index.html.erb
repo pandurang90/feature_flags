@@ -114,23 +114,38 @@
           <thead>
             <tr>          
                 <th colspan=4 class="bordered headerTop">Name</th>
-        
+                <% if Rails.env == "production" %>          
                   <th colspan=4 class="bordered headerTop">Enabled on Production</th>
-                                    
+                <% elsif Rails.env == "staging" %>
+                  <th colspan=4 class="bordered headerTop">Enabled on Staging</th>   
+                <% elsif Rails.env == "development" %>
+                  <th colspan=4 class="bordered headerTop">Enabled on Development</th>
+                <% else %>
+                  <th colspan=4 class="bordered headerTop">Enabled on Idyllic</th>          
+                <% end %>                         
             </tr>        
           </thead>
       
           <tbody>
-
+            <% @features.each do |feature| %>
+              <tr>              
+                <td colspan=4 class="bordered"> <%= feature.name %> </td> 
+                <td colspan=4 class="bordered">
+                  <%= form_for feature, :as => :feature_flag, :url => feature_flag_url(feature), :method => :put, :html => {:class => "feature-flag-form"} do |f| %>  
+                    <%= f.check_box Rails.env.to_s, :class => "feature-flag-toggle" %> 
+                  <% end  %>                              
+                </td>      
+              </tr>           
+            <% end %>
           </tbody>
       </table>
     </div>
 </div>
 
 
-<%# content_for :page_javascript do %>
+<% content_for :page_javascript do %>
   <script>
-    /*$(function(){
+    $(function(){
       $(".feature-flag-form").submit(function(e){
         e.preventDefault();
 
@@ -163,6 +178,6 @@
       $("body").delegate(".feature-flag-toggle", "click", function(e){        
         $(this).parent().submit()
       });
-    });*/
+    });
   </script>
-<%# end %>
+<% end %>
