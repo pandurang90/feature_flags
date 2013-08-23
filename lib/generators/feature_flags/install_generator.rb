@@ -4,6 +4,7 @@ module Generators
 
     desc "Creates feature_flags initializer, routes and copy locale
           files to your application."
+          
     def create_initializer_file
       create_file "config/initializers/feature_flag.rb", Install.content_for_initializer
       template "../templates/feature_flag.rb", "config/initializers/feature_flags.rb"
