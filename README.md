@@ -1,6 +1,6 @@
 # FeatureFlags
 
-TODO: Write a gem description
+Manage (turn on/off) different features in your rails app.
 
 ## Installation
 
@@ -18,7 +18,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+with faeture_flags gem you can easily manage different features in your rails application.You can turn on/off features.
+
+On
+    rails generate feature_flags:install
+
+this will generate 3 files,
+1) initializer file in config/initializer/feature_flags.rb
+2) migration file for Feature model
+3) Feature.rb 
+then do 
+    
+    rake db:migrate
+    
+    FeatureFlags.enabled?(:feature_name)
+
+#this will check whether feature is enabled or not, and if its not present/created ,it will create that feature and set it to enabled by default.
+
+
+    FeatureFlags.set_disabled?(:feature_name)
+
+#this will disable mentioned feature in your rails application.    
+
 
 ## Contributing
 
