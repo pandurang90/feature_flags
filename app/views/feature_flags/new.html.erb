@@ -1,0 +1,21 @@
+<style>
+  .field{margin-top: 10px;}
+  .feature-div{padding-top: 100px;}
+</style>
+
+
+<div class="feature-div">
+  <center>
+    <%= form_for Feature.new, :url => feature_flags_path, :method => :post, :html => {:class => "feature-flag-form"} do |f| %>  
+    <div class ="field">
+      <label>Name : </label> <%= f.text_field :name, :style=>"margin-left: 7px;" %>
+    </div>
+    <div class ="field">
+      <%= f.check_box :status, :style=>"margin-left: -80px;" %><label>Enabled </label> <br/>
+    </div>
+    <div class ="field">
+      <%= f.submit "Submit", :style=>"margin-left: -100px;"%>
+    </div>
+    <% end  %> 
+  </center>
+</div>

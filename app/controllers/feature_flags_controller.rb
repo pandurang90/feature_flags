@@ -5,6 +5,25 @@ class FeatureFlagsController < ApplicationController
     @features = Feature.all   
   end
 
+  def new
+  end
+
+  def create
+    @features = Feature.all
+    @feature = Feature.new(params[:feature])
+    if @feature.save
+      flash[:notice] = "#{feature.name} feature successfully created"
+      format.html{
+        redirect_to feature_flags_url
+      }
+    else
+      flash[:error] = "#{feature.name} feature could not be created"
+      format.html{
+        redirect_to feature_flags_url
+      }
+    end
+  end
+
   def update 
     @features = Feature.all   
     feature = Feature.find(params[:id])
@@ -13,7 +32,7 @@ class FeatureFlagsController < ApplicationController
       if feature.update_attributes(params[:feature])        
         flash[:notice] = "#{feature.name} feature successfully updated"
         format.html{
-          redirect_to features_url
+          redirect_to feature_flags_url
         }
 
         format.js{
@@ -22,7 +41,7 @@ class FeatureFlagsController < ApplicationController
       else        
         flash[:error] = "#{feature.name} feature could not be updated"
         format.html{
-          redirect_to features_url
+          redirect_to feature_flags_url
         }
         format.js{
           render :json => {:status => false, :message => flash[:error]}
@@ -39,7 +58,7 @@ class FeatureFlagsController < ApplicationController
       if feature.destroy
         flash[:notice] = "Feature successfully removed"
         format.html{
-          redirect_to features_url
+          redirect_to feature_flags_url
         }
 
         format.js{
@@ -48,7 +67,7 @@ class FeatureFlagsController < ApplicationController
       else        
         flash[:error] = "This feature could not be removed"
         format.html{
-          redirect_to features_url
+          redirect_to feature_flags_url
         }
         format.js{
           render :json => {:status => false, :message => flash[:error]}
