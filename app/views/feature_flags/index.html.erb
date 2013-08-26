@@ -114,8 +114,8 @@
           <thead>
             <tr>          
                 <th colspan=4 class="bordered headerTop">Name</th>      
-                <th colspan=4 class="bordered headerTop">Enabled on <%="#{Rails.env}"%></th>
-                                         
+                <th colspan=4 class="bordered headerTop">Status</th>
+                <th colspan=4 class="bordered headerTop">Action</th>
             </tr>        
           </thead>
           <%if @features.any?%>
@@ -123,10 +123,16 @@
               <% @features.each do |feature| %>
                 <tr>              
                   <td colspan=4 class="bordered"> <%= feature.name %> </td> 
-                  <td colspan=4 class="bordered">
-                    <%= form_for feature, :as => :feature_flag, :url => feature_flag_url(feature), :method => :put, :html => {:class => "feature-flag-form"} do |f| %>  
-                      <%= f.check_box Rails.env.to_s, :class => "feature-flag-toggle" %> 
-                    <% end  %>                              
+                  <td colspan=2 class="bordered"><%= feature.status? ? "Enabled" : "Disabled" %>
+                  <td colspan=2 class="bordered"><%= feature.status? ? "Enabled" : "Disabled" %>
+                    <a href ="<%= feature_flag_path(:id => feature.id, :feature=>{:status => !feature.status)} %>">
+                      <%= feature.status? ? "Disable" : "Enable" %> 
+                    </a>
+                    <%= link_to 'delete', feature_flag_path(feature), :method => :delete, :confirm => 'are you sure?' %>
+
+                    <%#= form_for feature, :as => :feature_flag, :url => feature_flag_url(feature), :method => :put, :html => {:class => "feature-flag-form"} do |f| %>  
+                      <%#= f.check_box Rails.env.to_s, :class => "feature-flag-toggle" %> 
+                    <%# end  %>                              
                   </td>      
                 </tr>           
               <% end %>

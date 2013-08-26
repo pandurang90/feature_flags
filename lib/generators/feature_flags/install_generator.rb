@@ -26,9 +26,7 @@ module FeatureFlags
       end
 
       def setup_routes
-        route "scope 'feature_flags' do /
-                  resources :features /
-              end"
+        route "resources :features_flags"
       end
 
       def copy_feature_migration
