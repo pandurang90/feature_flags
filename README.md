@@ -30,9 +30,15 @@ then do
     
     rake db:migrate
     
+
+
+To check whether paritcular feature is enabled or not use
+
     FeatureFlags.enabled?(:feature_name)
 
 this will check whether feature is enabled or not, and if its not present/created ,it will create that feature and set it to enabled by default.
+
+
 
 
     FeatureFlags.set_disabled?(:feature_name)
