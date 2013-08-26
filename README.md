@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-with faeture_flags gem you can easily manage different features in your rails application.You can turn on/off features.
+with feature_flags gem you can easily manage different features in your rails application.You can turn on/off features.
 
     rails generate feature_flags:install
 

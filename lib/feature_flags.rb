@@ -6,7 +6,6 @@ require "active_support/dependencies"
 
 module FeatureFlags
   # Your code goes here...\
-  mattr_accessor :app_root
 
   def self.enabled?(feature_name)
     feature = Feature.where(:name => feature_name).first
@@ -20,9 +19,17 @@ module FeatureFlags
     
   end
 
-  def self.set_disabled?(feature_name)
+  def self.set_disabled(feature_name)
     feature = Feature.where(:name => feature_name).first
     (feature.present? && feature.update_attributes(:status => false)) ? true : false
+  end
+
+  def self.disable_all
+    Feature.update_all(:status => false)
+  end
+
+  def self.enable_all
+    Feature.update_all(:status => true)
   end
 
 end
