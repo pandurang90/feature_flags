@@ -6,21 +6,24 @@ class FeatureFlagsController < ApplicationController
   end
 
   def new
+    @feature = Feature.new
   end
 
   def create
     @features = Feature.all
     @feature = Feature.new(params[:feature])
-    if @feature.save
-      flash[:notice] = "#{feature.name} feature successfully created"
-      format.html{
-        redirect_to feature_flags_url
-      }
-    else
-      flash[:error] = "#{feature.name} feature could not be created"
-      format.html{
-        redirect_to feature_flags_url
-      }
+    respond_to do |format|
+      if @feature.save
+        flash[:notice] = "#{@feature.name} feature successfully created"
+        format.html{
+          redirect_to feature_flags_url
+        }
+      else
+        flash[:error] = "#{@feature.name} feature could not be created"
+        format.html{
+          render :new
+        }
+      end
     end
   end
 

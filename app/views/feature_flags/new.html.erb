@@ -1,21 +1,32 @@
 <style>
   .field{margin-top: 10px;}
-  .feature-div{padding-top: 100px;}
+  .feature-div{padding-top: 100px;padding-left: 30%}
+  .errors{color: red;}
 </style>
 
 
 <div class="feature-div">
-  <center>
-    <%= form_for Feature.new, :url => feature_flags_path, :method => :post, :html => {:class => "feature-flag-form"} do |f| %>  
+
+    <%= form_for @feature, :url => feature_flags_path, :method => :post, :html => {:class => "feature-flag-form"} do |f| %>  
     <div class ="field">
-      <label>Name : </label> <%= f.text_field :name, :style=>"margin-left: 7px;" %>
+      <label>Name : </label> <br/>
+      <%= f.text_field :name %>
+      <div class ="errors">
+        <% if @feature.errors.any?  %>
+          <% @feature.errors.full_messages.each do |error| %>
+            <%= error %>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
     <div class ="field">
-      <%= f.check_box :status, :style=>"margin-left: -80px;" %><label>Enabled </label> <br/>
+      <label>Status : </label>&nbsp;&nbsp;
+      <%= f.check_box :status %><label>Enabled </label> <br/>
     </div>
     <div class ="field">
-      <%= f.submit "Submit", :style=>"margin-left: -100px;"%>
+      <%= f.submit "Submit" %>
     </div>
     <% end  %> 
-  </center>
+
 </div>

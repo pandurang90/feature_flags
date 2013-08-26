@@ -6,7 +6,7 @@ module FeatureFlags
       
     end
 
-    def enabled?(feature)
+    def self.enabled?(feature)
       feature = Feature.where(:name => feature).first
 
       if feature.present? 
@@ -18,7 +18,7 @@ module FeatureFlags
       
     end
 
-    def set_disabled?(feature)
+    def self.set_disabled?(feature)
       feature = Feature.where(:name => feature).first
       (feature.present? && feature.update_attributes(:status => false)) ? true : false
     end

@@ -1,18 +1,19 @@
 <style type="text/css">
-  th.bordered,td.bordered{height: 30px;border: 1px solid;text-align: center;vertical-align: middle;}
+  th.bordered,td.bordered{height: 30px;border: 1px solid;text-align: center;vertical-align: middle;border-color: black;}
   table#features tr th{background-color: #f0f0f0;width: 30%;}
   #features{width: 90%;}
+  .page-header h2{font-size: 25px;margin-left: 50px;}
 </style>
 
 
 <div class="feature_flag">
 
-  <div class="page-header left">
-      <h3 class="left">Features Flags <small><i> &nbsp; Checked services types will be available to the user<i></small></h3>
+  <div class="page-header">
+      <h2>Features Flags :</h2>
   </div>
 
 </div>
-<%= link_to "Add new Feature", new_feature_flag_path ,:style=>"float:right" %>
+<%= link_to "Add new Feature", new_feature_flag_path ,:style=>"float:right;margin-right: 50px;" %>
 
 <div class="feature_flag">
     <center>
@@ -21,7 +22,7 @@
             <tr>          
                 <th colspan=4 class="bordered headerTop">Name</th>      
                 <th colspan=2 class="bordered headerTop">Status</th>
-                <th colspan=4 class="bordered headerTop">Action</th>
+                <th colspan=4 class="bordered headerTop">Manage</th>
             </tr>        
           </thead>
           <%if @features.any?%>
@@ -29,7 +30,7 @@
               <% @features.each do |feature| %>
                 <tr>              
                   <td colspan=4 class="bordered"> <%= feature.name %> </td> 
-                  <td colspan=2 class="bordered"><%= feature.status? ? "Enabled" : "Disabled" %>
+                  <td colspan=2 class="bordered" style="color:<%= feature.status? ? '#84be40' : 'red' %>"><%= feature.status? ? "Enabled" : "Disabled" %>
                   <td colspan=4 class="bordered">
 
                     <%= form_for feature, :url => feature_flag_url(feature), :method => :put, :html => {:class => "feature-flag-form",:style => "display: inline-block"} do |f| %>  
@@ -37,7 +38,7 @@
                       <%= f.submit (feature.status? ? "Disable" : "Enable")%>
                     <% end  %> 
          
-                    <%= link_to 'delete', feature_flag_path(feature), :method => :delete, :confirm => 'are you sure?' %>
+                    <%= link_to 'Remove', feature_flag_path(feature), :method => :delete, :confirm => 'are you sure?' %>
 
                   </td>      
                 </tr>           
