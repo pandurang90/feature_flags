@@ -34,9 +34,7 @@ then do
 
 To check whether paritcular feature is enabled or not use
 
-    FeatureFlags.enabled?(:feature_name)
-
-this will check whether feature is enabled or not, and if its not present/created ,it will create that feature and set it to enabled by default.
+    FeatureFlags.enabled?(:feature_name)          #this will check whether feature is enabled or not, and if its not present/created ,it will create that feature and set it to enabled by default.
 
 
 
