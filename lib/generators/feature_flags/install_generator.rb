@@ -30,8 +30,8 @@ module FeatureFlags
       end
 
       def copy_feature_migration
-        template "feature_flag_migrate.rb", "db/migrate/#{MigrationNumber.next_migration_number}_create_feature_flags.rb"
-        template "feature_flag_model.rb", "app/models/feature_flag.rb"
+        template "feature_flag_migrate.rb", "db/migrate/#{MigrationNumber.next_migration_number}_create_features.rb"
+        template "feature_flag_model.rb", "app/models/feature.rb"
       end
 
     end

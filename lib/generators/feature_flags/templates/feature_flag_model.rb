@@ -1,8 +1,8 @@
-class FeatureFlag < ActiveRecord::Base
+class Feature< ActiveRecord::Base
 
-  validates :feature, presence: true
+  validates :name, presence: true
   validates :status, presence: true
 
-  attr_accessible :feature, :status
+  attr_accessible :name, :status
 
 end
