@@ -9,6 +9,10 @@ class FeatureFlagsController < ApplicationController
     @feature = Feature.new
   end
 
+  def edit
+    @feature = Feature.find(params[:id])
+  end
+
   def create
     @features = Feature.all
     @feature = Feature.new(params[:feature])

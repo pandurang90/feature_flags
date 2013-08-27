@@ -37,7 +37,8 @@
                       <%= f.hidden_field :status,:value=> !feature.status %> 
                       <%= f.submit (feature.status? ? "Disable" : "Enable")%>
                     <% end  %> 
-         
+                    <%= link_to 'Edit', edit_feature_flag_path(feature)%>
+
                     <%= link_to 'Remove', feature_flag_path(feature), :method => :delete, :confirm => 'are you sure?' %>
 
                   </td>      
