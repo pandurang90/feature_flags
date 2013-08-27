@@ -41,15 +41,12 @@ this will check whether feature is enabled or not, and if its not present/create
 
 ##############################################################################
 
-    FeatureFlags.enable_all             To enable all features in your app.
+    FeatureFlags.enable_all                   To enable all features in your app.
 
-    FeatureFlags.disable_all            To disable all features in your app.    
-##############################################################################
+    FeatureFlags.disable_all                  To disable all features in your app.
 
-
-    FeatureFlags.set_disabled(:feature_name)
-
-this will disable mentioned feature in your rails application.    
+    FeatureFlags.set_disabled(:feature_name)  To disable feature in your app.
+    
 
 ##############################################################################
 
