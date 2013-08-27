@@ -1,5 +1,5 @@
 class FeatureFlagsController < ApplicationController
-  #template FeatureFlags.configuration.template.downcase
+  layout FeatureFlags.configuration.layout.downcase
 
   def index
     @features = Feature.all   

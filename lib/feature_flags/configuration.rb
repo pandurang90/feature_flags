@@ -1,9 +1,9 @@
 module FeatureFlags
   class Configuration
-    attr_accessor :template, :filters
+    attr_accessor :layout, :filters
 
     def initialize
-      template = nil
+      layout = "application"
       filters = []
     end
     
