@@ -59,9 +59,12 @@ In feature_flags.rb initializer file you can mention which layout to use for vie
 ##############################################################################
 
 
-
+Here are some screenshots,
+main index view
 
 ![ScreenShot](https://raw.github.com/pandurang90/feature_flags/master/index.png)
+
+adding new feature to rails application
 
 ![ScreenShot](https://raw.github.com/pandurang90/feature_flags/master/new.png)
 

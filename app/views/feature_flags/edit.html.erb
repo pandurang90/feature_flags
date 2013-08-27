@@ -6,8 +6,8 @@
 
 
 <div class="feature-div">
-    <p style="font-weight:bold;font-size:23px">Add new Feature</p>
-    <%= form_for @feature, :url => feature_flag_path(feature), :method => :put, :html => {:class => "feature-flag-form"} do |f| %>  
+    <p style="font-weight:bold;font-size:23px">Update Feature</p>
+    <%= form_for @feature, :url => feature_flag_path(@feature), :method => :put, :html => {:class => "feature-flag-form"} do |f| %>  
     <div class ="field">
       <label>Name : </label> <br/>
       <%= f.text_field :name %>
