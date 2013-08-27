@@ -20,6 +20,7 @@ Or install it yourself as:
 
 with feature_flags gem you can easily manage different features in your rails application.You can turn on/off features.
 
+
     rails generate feature_flags:install
 
 this will generate 3 files,
@@ -30,7 +31,7 @@ then do
     
     rake db:migrate
     
-
+##############################################################################
 
 To check whether paritcular feature is enabled or not use
 
@@ -38,16 +39,19 @@ To check whether paritcular feature is enabled or not use
 
 this will check whether feature is enabled or not, and if its not present/created ,it will create that feature and set it to enabled by default.
 
+##############################################################################
 
     FeatureFlags.enable_all             To enable all features in your app.
 
     FeatureFlags.disable_all            To disable all features in your app.    
+##############################################################################
 
 
-
-    FeatureFlags.set_disabled?(:feature_name)
+    FeatureFlags.set_disabled(:feature_name)
 
 this will disable mentioned feature in your rails application.    
+
+##############################################################################
 
 In feature_flags.rb initializer file you can mention which layout to use for view
 
@@ -55,6 +59,8 @@ In feature_flags.rb initializer file you can mention which layout to use for vie
       config.layout = "application" 
     end
     
+##############################################################################
+
 ## Contributing
 
 1. Fork it
