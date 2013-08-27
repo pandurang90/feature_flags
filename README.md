@@ -39,6 +39,10 @@ To check whether paritcular feature is enabled or not use
 this will check whether feature is enabled or not, and if its not present/created ,it will create that feature and set it to enabled by default.
 
 
+    FeatureFlags.enable_all             To enable all features in your app.
+
+    FeatureFlags.disable_all            To disable all features in your app.    
+
 
 
     FeatureFlags.set_disabled?(:feature_name)
