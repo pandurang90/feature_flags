@@ -58,6 +58,13 @@ In feature_flags.rb initializer file you can mention which layout to use for vie
     
 ##############################################################################
 
+
+
+
+![ScreenShot](https://raw.github.com/pandurang90/feature_flags/master/index.png)
+
+![ScreenShot](https://raw.github.com/pandurang90/feature_flags/master/new.png)
+
 ## Contributing
 
 1. Fork it
