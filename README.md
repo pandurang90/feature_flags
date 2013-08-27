@@ -45,7 +45,12 @@ this will check whether feature is enabled or not, and if its not present/create
 
 this will disable mentioned feature in your rails application.    
 
+In feature_flags.rb initializer file you can mention which layout to use for view
 
+    FeatureFlags.configure do |config|
+      config.layout = "application" 
+    end
+    
 ## Contributing
 
 1. Fork it
