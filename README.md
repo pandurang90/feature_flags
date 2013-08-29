@@ -58,6 +58,10 @@ In feature_flags.rb initializer file you can mention which layout to use for vie
     
 ##############################################################################
 
+If you want to generate views use,
+
+    rails generate feature_flags:views
+
 
 Here are some screenshots,
 main index view
