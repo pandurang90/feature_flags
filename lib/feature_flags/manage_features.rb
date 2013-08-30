@@ -17,7 +17,7 @@ module FeatureFlags
     feature.save ? true : false
   end
 
-  def self.enable(:feature_name)
+  def self.enable(feature_name)
     feature = Feature.where(:name => feature_name).first
     if feature.present? 
       
