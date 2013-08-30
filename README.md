@@ -31,22 +31,19 @@ then do
     
     rake db:migrate
     
-##############################################################################
-
-To check whether paritcular feature is enabled or not use
-
-    FeatureFlags.enabled?(:feature_name)
-
-this will check whether feature is enabled or not, and if its not present/created ,it will create that feature and set it to enabled by default.
 
 ##############################################################################
+    FeatureFlags.enabled?(:feature_name)      To check whether particular feature is enabled or not 
 
     FeatureFlags.enable_all                   To enable all features in your app.
 
     FeatureFlags.disable_all                  To disable all features in your app.
 
     FeatureFlags.set_disabled(:feature_name)  To disable feature in your app.
+
+    FeatureFlags.create_and_enable(:feature_name)  To create and enable feature
     
+    FeatureFlags.enable(feature_name)         To enable feature
 
 ##############################################################################
 
