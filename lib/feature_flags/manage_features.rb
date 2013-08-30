@@ -21,7 +21,7 @@ module FeatureFlags
     feature = Feature.where(:name => feature_name).first
     if feature.present? 
       
-      if feature.update_attributes(:status => true)) 
+      if feature.update_attributes(:status => true)
         return true
       else
         false
@@ -35,7 +35,7 @@ module FeatureFlags
     feature = Feature.where(:name => feature_name).first
     if feature.present? 
 
-      if feature.update_attributes(:status => false)) 
+      if feature.update_attributes(:status => false))
         return true
       else
         false
