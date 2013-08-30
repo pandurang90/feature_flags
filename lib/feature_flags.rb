@@ -13,10 +13,15 @@ module FeatureFlags
     if feature.present? 
       feature.status? ? true : false
     elsif
-      Feature.create!(:name => feature_name, :status => true)
-      return true
+      #Feature.create!(:name => feature_name, :status => true)
+      #return true
+
+      raise "#{feature_name} feature not found."
     end
     
+  end
+
+  def self.create_and_enable
   end
 
   def self.set_disabled(feature_name)
