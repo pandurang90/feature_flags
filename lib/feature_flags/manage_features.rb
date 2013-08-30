@@ -1,10 +1,10 @@
 module FeatureFlags
   def self.enabled?(feature_name)
-    feature = Feature.where(:name => feature_name).first
+    feature = Feature.where(:name => feature_name).last
 
     if feature.present? 
       feature.status? ? true : false
-    elsif
+    else
       #Feature.create!(:name => feature_name, :status => true)
       #return true
       raise "#{feature_name} feature not found."
@@ -18,7 +18,7 @@ module FeatureFlags
   end
 
   def self.enable(feature_name)
-    feature = Feature.where(:name => feature_name).first
+    feature = Feature.where(:name => feature_name).last
     if feature.present? 
       
       if feature.update_attributes(:status => true)
@@ -26,21 +26,21 @@ module FeatureFlags
       else
         false
       end
-
+    else
       raise "#{feature_name} feature not found."
     end
   end
 
   def self.set_disabled(feature_name)
-    feature = Feature.where(:name => feature_name).first
+    feature = Feature.where(:name => feature_name).last
     if feature.present? 
 
-      if feature.update_attributes(:status => false))
+      if feature.update_attributes(:status => false)
         return true
       else
         false
       end
-
+    else
       raise "#{feature_name} feature not found."
     end
   end
