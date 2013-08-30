@@ -60,6 +60,8 @@ If you want to generate views use,
     rails generate feature_flags:views
 
 
+For more info:[Click Here](http://ror-tech.blogspot.in/2013/08/manage-different-features-in-our-ruby.html)
+
 Here are some screenshots,
 main index view
 
