@@ -43,7 +43,7 @@ then do
 
     FeatureFlags.create_and_enable(:feature_name)  To create and enable feature
     
-    FeatureFlags.enable(feature_name)         To enable feature
+    FeatureFlags.enable(:feature_name)         To enable feature
 
 ##############################################################################
 
