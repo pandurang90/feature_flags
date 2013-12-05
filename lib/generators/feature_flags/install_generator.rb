@@ -31,7 +31,9 @@ module FeatureFlags
 
       def copy_feature_migration
         template "feature_flag_migrate.rb", "db/migrate/#{MigrationNumber.next_migration_number}_create_features.rb"
-        template "feature_flag_model.rb", "app/models/feature.rb"
+
+        ##commented model file generation
+        #template "feature_flag_model.rb", "app/models/feature.rb"
       end
 
     end
