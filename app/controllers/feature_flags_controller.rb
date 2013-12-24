@@ -36,7 +36,7 @@ class FeatureFlagsController < ApplicationController
     feature = Feature.find(params[:id])
 
     respond_to do |format|
-      if feature.update_attributes(params[:feature])        
+      if feature.update_attributes(params[:feature])  
         flash[:notice] = "#{feature.name} feature successfully updated"
         format.html{
           redirect_to feature_flags_url
@@ -63,6 +63,7 @@ class FeatureFlagsController < ApplicationController
 
     respond_to do |format|
       if feature.destroy
+        Feature.update_hash
         flash[:notice] = "Feature successfully removed"
         format.html{
           redirect_to feature_flags_url
