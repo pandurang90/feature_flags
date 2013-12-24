@@ -20,12 +20,7 @@ module FeatureFlags
   def self.enable(feature_name)
     feature = Feature.where(:name => feature_name).last
     if feature.present? 
-      
-      if feature.update_attributes(:status => true)
-        return true
-      else
-        false
-      end
+      feature.update_attributes(:status => true) ? return true : return false
     else
       throw_error(feature_name)
     end
@@ -34,12 +29,7 @@ module FeatureFlags
   def self.set_disabled(feature_name)
     feature = Feature.where(:name => feature_name).last
     if feature.present? 
-
-      if feature.update_attributes(:status => false)
-        return true
-      else
-        false
-      end
+      feature.update_attributes(:status => false) ? return true : return false
     else
       throw_error(feature_name)
     end
