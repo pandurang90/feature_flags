@@ -20,7 +20,13 @@ module FeatureFlags
   def self.enable(feature_name)
     feature = Feature.where(:name => feature_name).last
     if feature.present? 
-      feature.update_attributes(:status => true) ? return true : return false
+      
+      if feature.update_attributes(:status => true)
+        return true
+      else
+        flash[:error] = "#{feature_name} could not be updated"
+        return false
+      end
     else
       throw_error(feature_name)
     end
@@ -29,7 +35,13 @@ module FeatureFlags
   def self.set_disabled(feature_name)
     feature = Feature.where(:name => feature_name).last
     if feature.present? 
-      feature.update_attributes(:status => false) ? return true : return false
+
+      if feature.update_attributes(:status => false)
+        return true
+      else
+        flash[:error] = "#{feature_name} could not be updated"
+        return false
+      end
     else
       throw_error(feature_name)
     end
