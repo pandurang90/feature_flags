@@ -27,7 +27,7 @@ module FeatureFlags
         false
       end
     else
-      raise "#{feature_name} feature not found."
+      throw_error(feature_name)
     end
   end
 
@@ -41,7 +41,7 @@ module FeatureFlags
         false
       end
     else
-      raise "#{feature_name} feature not found."
+      throw_error(feature_name)
     end
   end
 
@@ -56,7 +56,11 @@ module FeatureFlags
   end
 
   def get_feature(feature_name)
-    Feature::FEATURES.has_key?(feature_name) ? Feature::FEATURES[feature_name] : raise "#{feature_name} feature not found."
+    Feature::FEATURES.has_key?(feature_name) ? Feature::FEATURES[feature_name] : throw_error
+  end
+
+  def throw_error(feature_name)
+    raise "#{feature_name} feature not found."
   end
 
 end
