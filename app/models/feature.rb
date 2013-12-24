@@ -3,8 +3,9 @@ class Feature < ActiveRecord::Base
   validates :name, presence: true
 
   attr_accessible :name, :status
-  attr_accessor :features
 
+  FEATURES = {}
+  
   after_save :update_hash
 
   def update_hash
