@@ -7,5 +7,5 @@
 
 <div class="feature-div">
     <p style="font-weight:bold;font-size:23px">Add new Feature</p>
-    <%= render :partial => "feature" , :locals => {:path => feature_flags_path,:method =>:post,:feature => @feature } %>
+    <%= render :partial => "/feature_flags/form" , :locals => {:path => feature_flags_path,:method =>:post,:feature => @feature } %>
 </div>

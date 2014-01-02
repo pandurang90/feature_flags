@@ -57,12 +57,17 @@ module FeatureFlags
     Feature.last.update_attributes(:status => true)
   end
 
-  def get_feature(feature_name)
-    Feature::FEATURES.has_key?(feature_name) ? Feature::FEATURES[feature_name] : throw_error(feature_name)
+  def self.get_feature(feature_name)
+    update_feature_hash unless Feature.features.present?
+    Feature.features.has_key?(feature_name.to_s) ? Feature.features[feature_name.to_s] : throw_error(feature_name)
   end
 
-  def throw_error(feature_name)
+  def self.throw_error(feature_name)
     raise "#{feature_name} feature not found."
+  end
+
+  def self.update_feature_hash
+    Feature.new.update_hash
   end
 
 end

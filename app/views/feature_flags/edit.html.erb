@@ -7,5 +7,5 @@
 
 <div class="feature-div">
     <p style="font-weight:bold;font-size:23px">Update Feature</p>
-    <%= render :partial => "feature" , :locals => {:path => feature_flag_path(@feature),:method =>:put,:feature => @feature } %>
+    <%= render :partial => "/feature_flags/form" , :locals => {:path => feature_flag_path(@feature),:method =>:put,:feature => @feature } %>
 </div>
