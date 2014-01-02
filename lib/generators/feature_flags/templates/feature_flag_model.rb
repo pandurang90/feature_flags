@@ -1,4 +1,4 @@
-class Feature< ActiveRecord::Base
+class Feature < ActiveRecord::Base
   include FeatureFlags::FeatureBase
 
   validates :name, presence: true

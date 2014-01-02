@@ -49,16 +49,16 @@ module FeatureFlags
 
   def self.disable_all
     Feature.update_all(:status => false)
-    Feature.update_hash
+    Feature.last.update_attributes(:status => false)
   end
 
   def self.enable_all
     Feature.update_all(:status => true)
-    Feature.update_hash
+    Feature.last.update_attributes(:status => true)
   end
 
   def get_feature(feature_name)
-    Feature::FEATURES.has_key?(feature_name) ? Feature::FEATURES[feature_name] : throw_error
+    Feature::FEATURES.has_key?(feature_name) ? Feature::FEATURES[feature_name] : throw_error(feature_name)
   end
 
   def throw_error(feature_name)
