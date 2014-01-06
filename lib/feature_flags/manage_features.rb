@@ -1,6 +1,6 @@
 module FeatureFlags
-  def self.enabled?(feature_name)
-    get_feature(feature_name)
+  def self.enabled?(feature_name, dependant_features = [])
+    check_features(dependant_features) ? false : get_feature(feature_name)
 
     # if feature.present? 
     #   feature.status? ? true : false
@@ -10,6 +10,10 @@ module FeatureFlags
     #   raise "#{feature_name} feature not found."
     # end
     
+  end
+
+  def self.check_features(features)
+    features.map{|feature| get_feature(feature)}.compact.include? false
   end
 
   def self.create_and_enable(feature_name)
@@ -59,7 +63,7 @@ module FeatureFlags
 
   def self.get_feature(feature_name)
     update_feature_hash unless Feature.features.present?
-    Feature.features.has_key?(feature_name.to_s) ? Feature.features[feature_name.to_s] : throw_error(feature_name)
+    Feature.features.has_key?(feature_name) ? Feature.features[feature_name] : throw_error(feature_name)
   end
 
   def self.throw_error(feature_name)

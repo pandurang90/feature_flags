@@ -9,13 +9,13 @@ class Feature < ActiveRecord::Base
 
  	def self.features
  		#@@features = {}
- 		@@features.present? ? @@features : Feature.all.map{|f| @@features[f.name.to_s] = f.status} 
+ 		@@features.present? ? @@features : Feature.all.map{|f| @@features[f.name.to_s.intern] = f.status} 
  		@@features
  	end
 
 	def update_hash
 		@@features = {}
-  	Feature.all.map{|f| @@features[f.name.to_s] = f.status}
+  	Feature.all.map{|f| @@features[f.name.to_s.intern] = f.status}
   	@@features.freeze
   	puts @@features.inspect
   end
