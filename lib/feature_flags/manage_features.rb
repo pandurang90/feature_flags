@@ -62,8 +62,8 @@ module FeatureFlags
   end
 
   def self.get_feature(feature_name)
-    update_feature_hash unless Feature.features.present?
-    Feature.features.has_key?(feature_name) ? Feature.features[feature_name] : throw_error(feature_name)
+    update_feature_hash unless FeatureFlags::FeatureBase.features.present?
+    FeatureFlags::FeatureBase.features.has_key?(feature_name) ? FeatureFlags::FeatureBase.features[feature_name] : throw_error(feature_name)
   end
 
   def self.throw_error(feature_name)
