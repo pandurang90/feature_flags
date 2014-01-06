@@ -9,12 +9,14 @@ module FeatureFlags
  		@@features_hash = {}
 
 
+ 		#returns features hash 
 	 	def self.features
 	 		#@@features = {}
 	 		@@features_hash.present? ? @@features_hash : Feature.all.map{|f| @@features_hash[f.name.to_s.intern] = f.status} 
 	 		@@features_hash
 	 	end
 
+	 	#updates hash for features
 	 	def self.set_hash
 	 		@@features_hash = {}
 	 		Feature.all.map{|f| @@features_hash[f.name.to_s.intern] = f.status}

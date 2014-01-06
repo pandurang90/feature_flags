@@ -1,6 +1,11 @@
 class Feature < ActiveRecord::Base
-  include FeatureFlags::FeatureBase
 
+  #### IMPORTANT start ####
+  ### Dont remove this as this required for memoization of features...
+  include FeatureFlags::FeatureBase
+  #### IMPORTANT end ####
+
+  
   validates :name, presence: true
 
   attr_accessible :name, :status
