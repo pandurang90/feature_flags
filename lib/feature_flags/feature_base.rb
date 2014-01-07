@@ -12,7 +12,7 @@ module FeatureFlags
  		#returns features hash 
 	 	def self.features
 	 		pstore_value = get_pstore_value
-	 		@@features_hash = {} if pstore_value.present?
+	 		@@features_hash = {} unless pstore_value.present?
 
 	 		(@@features_hash.present? && pstore_value.present?) ? @@features_hash : Feature.all.map{|f| @@features_hash[f.name.to_s.intern] = f.status} 
 	 		
