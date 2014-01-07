@@ -23,10 +23,10 @@ module FeatureFlags
 	 		@@features_hash
 	 	end
 
+	 	###returns current value in pstore
 	 	def self.get_pstore_value
 	 		store = PStore.new('feature_flags')
 	 		store.transaction {store[:updated]} 
-
 	 	end
 
 	 	#updates hash for features
