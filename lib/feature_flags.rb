@@ -6,8 +6,9 @@ require "feature_flags/engine"
 require "active_support/dependencies"
 require "feature_flags/feature_base"
 require 'pstore'
+require 'feature_flags/storage'
 
 module FeatureFlags
   # Your code goes here...\
-	update_pstore_value
+	FeatureFlags.update_pstore_value
 end

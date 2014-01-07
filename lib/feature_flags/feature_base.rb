@@ -11,11 +11,20 @@ module FeatureFlags
 
  		#returns features hash 
 	 	def self.features
-	 		#@@features = {}
-	 		store = PStore.new('updated_from_console')
-	 		pstore_value = store.transaction {store[:updated]} 
+	 		pstore_value = get_pstore_value
+	 		@@features_hash = {} if pstore_value.present?
+
 	 		(@@features_hash.present? && pstore_value.present?) ? @@features_hash : Feature.all.map{|f| @@features_hash[f.name.to_s.intern] = f.status} 
+	 		
+	 		FeatureFlags.update_pstore_value(!defined? Rails::Console)
+
 	 		@@features_hash
+	 	end
+
+	 	def self.get_pstore_value
+	 		store = PStore.new('feature_flags')
+	 		store.transaction {store[:updated]} 
+
 	 	end
 
 	 	#updates hash for features
