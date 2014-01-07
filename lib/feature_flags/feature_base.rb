@@ -12,7 +12,9 @@ module FeatureFlags
  		#returns features hash 
 	 	def self.features
 	 		#@@features = {}
-	 		@@features_hash.present? ? @@features_hash : Feature.all.map{|f| @@features_hash[f.name.to_s.intern] = f.status} 
+	 		store = PStore.new('updated_from_console')
+	 		pstore_value = store.transaction {store[:updated]} 
+	 		(@@features_hash.present? && pstore_value.present?) ? @@features_hash : Feature.all.map{|f| @@features_hash[f.name.to_s.intern] = f.status} 
 	 		@@features_hash
 	 	end
 
@@ -26,7 +28,12 @@ module FeatureFlags
 	  module InstanceMethods
 			def update_hash
 				FeatureFlags::FeatureBase.set_hash
+				update_pstore_hash
 			end 
+
+			def update_pstore_hash
+				FeatureFlags.update_pstore_value(!defined? Rails::Console)
+			end
 		end
 
 	end

@@ -36,6 +36,14 @@ module FeatureFlags
     end
   end
 
+  def self.update_yaml
+
+    yaml = YAML.load_file(File.expand_path('../test/test.yml', __FILE__))
+    yaml[:updated] = !yaml[:updated]
+    puts yaml
+    #File.open('/yaml/test.yml', 'w') {|f| f.write yaml.to_yaml } #Store
+  end
+
   def self.set_disabled(feature_name)
     feature = Feature.where(:name => feature_name).last
     if feature.present? 
