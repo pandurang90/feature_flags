@@ -11,6 +11,8 @@ module FeatureFlags
 
  		#returns features hash 
 	 	def self.features
+
+	 		##checking value in pstore if false then update to true and update features_hash
 	 		pstore_value = get_pstore_value
 	 		@@features_hash = {} unless pstore_value.present?
 
