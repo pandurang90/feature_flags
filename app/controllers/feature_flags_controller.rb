@@ -70,7 +70,6 @@ class FeatureFlagsController < ApplicationController
 
     respond_to do |format|
       if feature.destroy
-        Feature.new.update_hash
         flash[:notice] = "Feature successfully removed"
         format.html{
           redirect_to feature_flags_url
