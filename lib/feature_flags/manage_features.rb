@@ -1,11 +1,15 @@
 module FeatureFlags
-  def self.enabled?(feature_name, dependant_features = [])
-    check_features(dependant_features) ? false : get_feature(feature_name)
+  def self.enabled?(feature)
+    feature.is_a?(Array) ? !check_features(feature) : get_feature(feature)
+  end
+
+  def self.enabled_any?(features = [])
+    check_features(features, true)
   end
 
   ## checking dependant features
-  def self.check_features(features)
-    features.map{|feature| get_feature(feature)}.compact.include? false
+  def self.check_features(features, check = false)
+    features.map{|feature| get_feature(feature)}.compact.include? check
   end
 
   def self.create_and_enable(feature_name)
