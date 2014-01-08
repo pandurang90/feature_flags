@@ -72,7 +72,7 @@ For Demo:[Click Here](http://feature-flags.herokuapp.com/)
 Here are some screenshots,
 main index view
 
-![ScreenShot](https://raw.github.com/pandurang90/feature_flags/master/TestApp.png)
+![ScreenShot](https://github.com/pandurang90/feature_flags/blob/V-0.1.0/TestApp.png)
 
 adding new feature to rails application
 
