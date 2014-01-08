@@ -11,15 +11,17 @@ module FeatureFlags
 
  		#returns features hash 
 	 	def self.features
-
 	 		##checking value in pstore if false then update to true and update features_hash
 	 		pstore_value = get_pstore_value
 	 		@@features_hash = {} unless pstore_value.present?
 
-	 		(@@features_hash.present? && pstore_value.present?) ? @@features_hash : Feature.all.map{|f| @@features_hash[f.name.to_s.intern] = f.status} 
+	 		if(@@features_hash.present? && pstore_value.present?) 
+	 			@@features_hash 
+	 		else
+	 			set_hash
+	 			Feature.new.update_pstore_hash
+	 		end
 	 		
-	 		FeatureFlags.update_pstore_value(!defined? Rails::Console)
-
 	 		@@features_hash
 	 	end
 

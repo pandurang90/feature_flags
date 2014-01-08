@@ -53,7 +53,6 @@ module FeatureFlags
   #fetch feature's status
   def self.get_feature(feature_name)
     all_features = FeatureFlags::FeatureBase.features
-    update_feature_hash unless all_features.present?
     all_features.has_key?(feature_name) ? all_features[feature_name] : throw_error(feature_name)
   end
 
