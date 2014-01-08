@@ -62,6 +62,8 @@ If you want to generate views use,
 
 For more info:[Click Here](http://ror-tech.blogspot.in/2013/08/manage-different-features-in-our-ruby.html)
 
+For Demo:[Click Here](http://feature-flags.herokuapp.com/)
+
 Here are some screenshots,
 main index view
 
