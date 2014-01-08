@@ -18,8 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-with feature_flags gem you can easily manage different features in your rails application.You can turn on/off features.
+For changes in new version(0.1.0):[Click Here](http://ror-tech.blogspot.com/2014/01/ruby-gem-featureflags-new-features-010.html)
 
+with feature_flags gem you can easily manage different features in your rails application.You can turn on/off features.
 
     rails generate feature_flags:install
 
@@ -43,7 +44,7 @@ then do
 
     FeatureFlags.create_and_enable(:feature_name)  To create and enable feature
     
-    FeatureFlags.enable(feature_name)         To enable feature
+    FeatureFlags.enable(:feature_name)         To enable feature
 
 ##############################################################################
 
@@ -59,6 +60,7 @@ If you want to generate views use,
 
     rails generate feature_flags:views
 
+For more info:[Click Here](http://ror-tech.blogspot.in/2013/08/manage-different-features-in-our-ruby.html)
 
 Here are some screenshots,
 main index view
