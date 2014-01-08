@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-##For changes in new version(0.1.0):[Click Here](http://ror-tech.blogspot.com/2014/01/ruby-gem-featureflags-new-features-010.html)
+###For changes in new version(0.1.0):[Click Here](http://ror-tech.blogspot.com/2014/01/ruby-gem-featureflags-new-features-010.html)
 
 with feature_flags gem you can easily manage different features in your rails application.You can turn on/off features.
 
