@@ -36,6 +36,10 @@ then do
 ##############################################################################
     FeatureFlags.enabled?(:feature_name)      To check whether particular feature is enabled or not 
 
+    FeatureFlags.enabled?([:feature_name1, :feature_name2, :feature_name3])      To check for multiple features
+
+    FeatureFlags.enabled_any?([:feature_name1, :feature_name2, :feature_name3])  To check if any of given features are enabled or not
+
     FeatureFlags.enable_all                   To enable all features in your app.
 
     FeatureFlags.disable_all                  To disable all features in your app.
