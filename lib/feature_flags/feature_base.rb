@@ -39,16 +39,15 @@ module FeatureFlags
 	 		@@features_hash.freeze
 	 	end
 		
-	  module InstanceMethods
-			def update_hash
-				FeatureFlags::FeatureBase.set_hash
-				update_pstore_hash
-			end 
+		def update_hash
+			FeatureFlags::FeatureBase.set_hash
+			update_pstore_hash
+		end 
 
-			def update_pstore_hash
-				FeatureFlags.update_pstore_value(!defined? Rails::Console)
-			end
+		def update_pstore_hash
+			FeatureFlags.update_pstore_value(!defined? Rails::Console)
 		end
+	
 
 	end
 end
