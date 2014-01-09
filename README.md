@@ -25,6 +25,8 @@ For version(0.1.0):[Click Here](https://github.com/pandurang90/feature_flags/blo
 
 For version(<= 0.0.3):[Click Here](https://github.com/pandurang90/feature_flags/blob/v-0.0.3/README.md)
 
+Checkout demo:[Click Here](http://feature-flags.herokuapp.com/)
+
 ## Contributing
 
 1. Fork it
