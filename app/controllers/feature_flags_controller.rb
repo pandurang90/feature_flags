@@ -1,8 +1,8 @@
 class FeatureFlagsController < ApplicationController
   layout FeatureFlags.configuration.layout.downcase
+  before_filter :load_features, :only => [:index,:create,:update,:destroy]
 
   def index
-    @features = Feature.all   
   end
 
   def new
@@ -14,7 +14,6 @@ class FeatureFlagsController < ApplicationController
   end
 
   def create
-    @features = Feature.all
     @feature = Feature.new(params[:feature])
     respond_to do |format|
       if @feature.save
@@ -31,12 +30,21 @@ class FeatureFlagsController < ApplicationController
     end
   end
 
+  def enable_all
+    FeatureFlags.enable_all
+  end
+
+  def disable_all
+    FeatureFlags.disable_all
+  end
+
   def update 
-    @features = Feature.all   
     feature = Feature.find(params[:id])
+    enabled_all = params[:enable_all].present? ? enable_all : false
+    disabled_all = params[:disable_all].present? ? disable_all : false
 
     respond_to do |format|
-      if feature.update_attributes(params[:feature])        
+      if enabled_all || disabled_all || feature.update_attributes(params[:feature])  
         flash[:notice] = "#{feature.name} feature successfully updated"
         format.html{
           redirect_to feature_flags_url
@@ -58,7 +66,6 @@ class FeatureFlagsController < ApplicationController
   end
 
   def destroy
-    @features = Feature.all   
     feature = Feature.find(params[:id])
 
     respond_to do |format|
@@ -81,5 +88,9 @@ class FeatureFlagsController < ApplicationController
         }       
       end     
     end
+  end
+
+  def load_features
+    @features = Feature.all
   end
 end

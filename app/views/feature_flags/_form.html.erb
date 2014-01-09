@@ -1,0 +1,21 @@
+<%= form_for feature, :url => path, :method => method, :html => {:class => "feature-flag-form"} do |f| %>  
+    <div class ="field">
+      <label>Name : </label> <br/>
+      <%= f.text_field :name %>
+      <div class ="errors">
+        <% if feature.errors.any?  %>
+          <% feature.errors.full_messages.each do |error| %>
+            <%= error %>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+    <div class ="field">
+      <label>Status : </label>&nbsp;&nbsp;
+      <%= f.check_box :status %><label>Enabled </label> <br/>
+    </div>
+    <div class ="field">
+      <%= f.submit "Submit" %>
+    </div>
+<% end  %> 

@@ -14,7 +14,9 @@
 
 </div>
 <%= link_to "Add new Feature", new_feature_flag_path ,:style=>"float:right;margin-right: 50px;" %>
+<%= render :partial => "/feature_flags/options", :locals => { :feature => @features.last } if @features.any?%>
 
+<!--list of features start-->
 <div class="feature_flag">
     <center>
       <table id="features">
@@ -45,6 +47,10 @@
                 </tr>           
               <% end %>
             </tbody>
+          <%else%>
+            <tbody>
+              <tr><th colspan="10">Currently there are no features present!</th></tr>
+            </tbody>  
           <% end %>
       </table>
     </center>
