@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-###For changes in new version(0.1.0):[Click Here](http://ror-tech.blogspot.com/2014/01/ruby-gem-featureflags-new-features-010.html)
+###For changes in new version(0.1.0):[Click Here](http://www.pandurang-waghulde.com/2014/01/ruby-gem-featureflags-new-features-010.html)
 
 ###Docs
 For version(0.1.0):[Click Here](https://github.com/pandurang90/feature_flags/blob/V-0.1.0/README.md)
