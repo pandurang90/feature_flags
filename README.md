@@ -1,5 +1,6 @@
-# FeatureFlags
-[![Gem Version](https://badge.fury.io/rb/feature_flags.png)](http://badge.fury.io/rb/feature_flags)
+# FeatureFlags [![Gem Version](https://badge.fury.io/rb/feature_flags.png)](http://badge.fury.io/rb/feature_flags)
+
+
 Manage (turn on/off) different features in your rails app.
 
 ## Installation
