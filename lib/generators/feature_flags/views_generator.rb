@@ -10,7 +10,6 @@ module FeatureFlags
         directory 'feature_flags', 'app/views/feature_flags'
       end
       
-      desc "copies view files for feature_flags"
     end
   end
 
