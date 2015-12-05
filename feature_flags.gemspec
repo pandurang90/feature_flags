@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
   gem.license = 'MIT'
-  gem.add_dependency "activesupport" 
-  gem.add_dependency "rails"        
+  gem.add_dependency "activesupport"
+  gem.add_dependency "pry" 
+  gem.add_dependency "rails",'>= 4.0.0'
 end

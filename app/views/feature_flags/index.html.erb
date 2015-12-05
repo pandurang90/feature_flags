@@ -1,58 +1,54 @@
-<style type="text/css">
-  th.bordered,td.bordered{height: 30px;border: 1px solid;text-align: center;vertical-align: middle;border-color: black;}
-  table#features tr th{background-color: #f0f0f0;width: 30%;}
-  #features{width: 90%;}
-  .page-header h2{font-size: 25px;margin-left: 50px;}
-</style>
+<div class="row" style="margin-top:80px">
+  <%= link_to "Add new Feature", new_feature_flag_path ,:style=>"float:right;margin-right: 50px;", class: "btn btn-primary" %>
+  <%= render :partial => "/feature_flags/options", :locals => { :feature => @features.last } if @features.any?%>
+  <% features_files = FeatureFlags.search %>
+  <!--list of features start-->
 
+  <div class="container" style="margin-top:50px">
+      <center>
+        <table id="features" class= "table table-hover">
+            <thead>
+              <tr>          
+                  <th colspan=4>Name</th>      
+                  <th colspan=2>Status</th>
+                  <th colspan=4>Usage in your Application</th>
+                  <th colspan=4>Manage</th>                
+              </tr>        
+            </thead>
+            <%if @features.any?%>
+              <tbody>
+                <% @features.each do |feature| %>
+                  <tr>              
+                    <td colspan=4> <%= feature.name %> </td> 
+                    <td colspan=2 style="color:<%= feature.status? ? '#84be40' : 'red' %>">
+                      <span class='<%="label #{feature.status? ? 'label-success' : 'label-danger'}" %>'>
+                        <%= feature.status? ? "Enabled" : "Disabled" %>
+                      </span>
+                    </td>
+                    <td colspan=4 class="bordered">
+                      <%= features_files[feature.name.to_sym].count %> file(s)
+                    </td>
+                    <td colspan=4>
 
-<div class="feature_flag">
+                      <%= form_for feature, :url => feature_flag_url(feature), :method => :put, :html => {:class => "feature-flag-form",:style => "display: inline-block"} do |f| %>  
+                        <%= f.hidden_field :status,:value=> !feature.status %> 
+                        <%= f.submit (feature.status? ? "Disable" : "Enable"), class: "btn #{feature.status? ? 'btn-warning' : 'btn-success'}"%>
+                      <% end  %> 
+                      <%= link_to 'Edit', edit_feature_flag_path(feature), class: "btn btn-primary"%>
 
-  <div class="page-header">
-      <h2>Features Flags :</h2>
+                      <%= link_to 'Remove', feature_flag_path(feature), :method => :delete, :confirm => 'are you sure?',class: "btn btn-danger" %>
+
+                    </td> 
+                  </tr>           
+                <% end %>
+              </tbody>
+            <%else%>
+              <tbody>
+                <tr><th colspan="10">Currently there are no features present!</th></tr>
+              </tbody>  
+            <% end %>
+        </table>
+      </center>
   </div>
 
 </div>
-<%= link_to "Add new Feature", new_feature_flag_path ,:style=>"float:right;margin-right: 50px;" %>
-<%= render :partial => "/feature_flags/options", :locals => { :feature => @features.last } if @features.any?%>
-
-<!--list of features start-->
-<div class="feature_flag">
-    <center>
-      <table id="features">
-          <thead>
-            <tr>          
-                <th colspan=4 class="bordered headerTop">Name</th>      
-                <th colspan=2 class="bordered headerTop">Status</th>
-                <th colspan=4 class="bordered headerTop">Manage</th>
-            </tr>        
-          </thead>
-          <%if @features.any?%>
-            <tbody>
-              <% @features.each do |feature| %>
-                <tr>              
-                  <td colspan=4 class="bordered"> <%= feature.name %> </td> 
-                  <td colspan=2 class="bordered" style="color:<%= feature.status? ? '#84be40' : 'red' %>"><%= feature.status? ? "Enabled" : "Disabled" %>
-                  <td colspan=4 class="bordered">
-
-                    <%= form_for feature, :url => feature_flag_url(feature), :method => :put, :html => {:class => "feature-flag-form",:style => "display: inline-block"} do |f| %>  
-                      <%= f.hidden_field :status,:value=> !feature.status %> 
-                      <%= f.submit (feature.status? ? "Disable" : "Enable")%>
-                    <% end  %> 
-                    <%= link_to 'Edit', edit_feature_flag_path(feature)%>
-
-                    <%= link_to 'Remove', feature_flag_path(feature), :method => :delete, :confirm => 'are you sure?' %>
-
-                  </td>      
-                </tr>           
-              <% end %>
-            </tbody>
-          <%else%>
-            <tbody>
-              <tr><th colspan="10">Currently there are no features present!</th></tr>
-            </tbody>  
-          <% end %>
-      </table>
-    </center>
-</div>
-

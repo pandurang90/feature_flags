@@ -7,6 +7,7 @@ require "active_support/dependencies"
 require "feature_flags/feature_base"
 require 'pstore'
 require 'feature_flags/storage'
+require 'feature_flags/search'
 
 module FeatureFlags
   # Your code goes here...\

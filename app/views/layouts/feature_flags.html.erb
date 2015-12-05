@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SampleApp</title>
+  <%= stylesheet_link_tag    'feature_flags/application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'feature_flags/application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render partial: "/feature_flags/shared/header" %>
+<%= yield %>
+
+</body>
+</html>
